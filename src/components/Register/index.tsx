@@ -86,10 +86,11 @@ const RegisterForm = ({ onSubmit }: Props) => {
               onBlur={formik.handleBlur}
               error={formik.touched.password && Boolean(formik.errors.password)}
               helperText={formik.touched.password && formik.errors.password}
+              placeholder="Enter Password"
               size="small"
             />
             <Button variant="contained" type="submit">
-              Register
+              REGISTER
             </Button>
           </Box>
         </form>

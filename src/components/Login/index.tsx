@@ -57,6 +57,7 @@ const LoginForm = ({ onSubmit }: Props) => {
             <TextField
               name="email"
               label="Email"
+              id="email"
               value={formik.values.email}
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
@@ -68,17 +69,19 @@ const LoginForm = ({ onSubmit }: Props) => {
             <TextField
               name="password"
               label="Password"
+              id="password"
               type="password"
               value={formik.values.password}
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
               error={formik.touched.password && Boolean(formik.errors.password)}
               helperText={formik.touched.password && formik.errors.password}
+              placeholder="Enter Password"
               size="small"
             />
 
             <Button variant="contained" type="submit">
-              Login
+              submit
             </Button>
           </Box>
         </form>
