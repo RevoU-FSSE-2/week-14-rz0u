@@ -73,6 +73,7 @@ const CategoryForm = ({ onSubmit, category }: Props) => {
               onBlur={formik.handleBlur}
               error={formik.touched.name && Boolean(formik.errors.name)}
               helperText={formik.touched.name && formik.errors.name}
+              placeholder="Name"
               size="small"
             />
             <FormControl fullWidth>
@@ -98,7 +99,7 @@ const CategoryForm = ({ onSubmit, category }: Props) => {
               </Select>
             </FormControl>
 
-            <IconButton type="submit" disableRipple>
+            <IconButton name="submit" type="submit" disableRipple>
               <AddCircleOutlineIcon sx={{ color: blue[400] }} />
             </IconButton>
           </Box>

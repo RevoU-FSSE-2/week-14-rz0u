@@ -2,7 +2,7 @@ import { fireEvent, render, screen, waitFor } from "@testing-library/react";
 import RegisterForm from ".";
 import { BrowserRouter } from "react-router-dom";
 
-describe("Test Login Form", () => {
+describe("Test Register Form", () => {
   const mockProps = jest.fn();
   test("Title Rendered Correctly", async () => {
     render(

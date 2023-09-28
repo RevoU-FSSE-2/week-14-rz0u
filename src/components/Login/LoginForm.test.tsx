@@ -1,7 +1,6 @@
 import { fireEvent, render, screen, waitFor } from "@testing-library/react";
 import LoginForm from ".";
 import { BrowserRouter } from "react-router-dom";
-// import { act } from "react-dom/test-utils";
 
 describe("Test Login Form", () => {
   const mockProps = jest.fn();
@@ -55,12 +54,11 @@ describe("Test Login Form", () => {
     const emailInput = getByPlaceholderText("john123@email.com") as HTMLElement;
     const passwordInput = getByPlaceholderText("Enter Password") as HTMLElement;
     const submitButton = getByText("submit");
-    // act(() => {
+
     fireEvent.change(emailInput, { target: { value: "testEmail@email.com" } });
     fireEvent.change(passwordInput, { target: { value: "testPassword" } });
 
     fireEvent.click(submitButton);
-    // });
 
     await waitFor(() => {
       expect(mockProps2).toHaveBeenCalledTimes(1);
