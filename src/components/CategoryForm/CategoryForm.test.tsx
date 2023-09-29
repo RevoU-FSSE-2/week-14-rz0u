@@ -61,12 +61,11 @@ describe("Test Category Form", () => {
   });
 
   test("onSubmit Works Correctly", async () => {
-    const { getByPlaceholderText, getByLabelText, container, getByRole } =
-      render(
-        <BrowserRouter>
-          <CategoryForm onSubmit={mockProps} />
-        </BrowserRouter>
-      );
+    const { getByPlaceholderText, container } = render(
+      <BrowserRouter>
+        <CategoryForm onSubmit={mockProps} />
+      </BrowserRouter>
+    );
     const nameInput = getByPlaceholderText("Name") as HTMLElement;
     const statusSelect = container.querySelector(
       "[data-testid='select-status']"
