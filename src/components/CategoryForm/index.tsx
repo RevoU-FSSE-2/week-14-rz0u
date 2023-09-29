@@ -77,16 +77,26 @@ const CategoryForm = ({ onSubmit, category }: Props) => {
               size="small"
             />
             <FormControl fullWidth>
-              <InputLabel>Status</InputLabel>
+              <InputLabel htmlFor="mui-component-select-is_active">
+                Status
+              </InputLabel>
               <Select
                 name="is_active"
                 label="Status"
                 value={formik.values.is_active ? "active" : "inactive"}
-                onChange={formik.handleChange}
+                // onChange={formik.handleChange}
+                onChange={(event) => {
+                  formik.setFieldValue(
+                    "is_active",
+                    event.target.value === "active"
+                  );
+                }}
                 // onBlur={() => formik.setFieldTouched("is_active", true)}
                 error={
                   formik.touched.is_active && Boolean(formik.errors.is_active)
                 }
+                placeholder="Enter Status"
+                data-testid="select-status"
                 size="small"
               >
                 <MenuItem value={"active"}>Active</MenuItem>

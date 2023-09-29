@@ -1,6 +1,6 @@
 import {
+  act,
   fireEvent,
-  getByLabelText,
   render,
   screen,
   waitFor,
@@ -61,25 +61,31 @@ describe("Test Category Form", () => {
   });
 
   test("onSubmit Works Correctly", async () => {
-    const { getByPlaceholderText, getByLabelText } = render(
-      <BrowserRouter>
-        <CategoryForm onSubmit={mockProps} />;
-      </BrowserRouter>
-    );
+    const { getByPlaceholderText, getByLabelText, container, getByRole } =
+      render(
+        <BrowserRouter>
+          <CategoryForm onSubmit={mockProps} />
+        </BrowserRouter>
+      );
     const nameInput = getByPlaceholderText("Name") as HTMLElement;
-    const statusSelect = getByLabelText("Status") as HTMLElement;
+    const statusSelect = container.querySelector(
+      "[data-testid='select-status']"
+    ) as Element;
+
     const submitButton = screen.getByRole("button", { name: "" });
 
-    fireEvent.change(nameInput, { target: { value: "testName" } });
-    fireEvent.change(statusSelect, { target: { value: "active" } });
+    act(() => {
+      fireEvent.change(nameInput, { target: { value: "testName" } });
+      fireEvent.mouseDown(statusSelect);
 
-    fireEvent.click(submitButton);
+      fireEvent.click(submitButton);
+    });
 
     await waitFor(() => {
       expect(mockProps).toHaveBeenCalledTimes(1);
       expect(mockProps).toHaveBeenCalledWith({
         name: "testName",
-        is_active: "active",
+        is_active: true,
       });
     });
   });

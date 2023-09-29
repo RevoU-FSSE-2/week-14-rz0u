@@ -37,6 +37,10 @@ export interface GetCategoryResponse {
 }
 
 export type CategoryForm = Omit<Category, "id">;
+// export type CategoryForm = {
+//   name: string;
+//   is_active: string;
+// };
 
 export interface CategoryPayload {
   name: string;
